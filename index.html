@@ -1,44 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - Fundo do Mar</title>
     <style>
+        /* Estilos Globais do Corpo da Página */
         body {
             background-color: #f0f8ff; /* Azul bem claro para o fundo da página */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
         }
+
+        /* Estilos do Cabeçalho - Estrutura do Prof. Marcelo */
         header {
             background-color: #0077b6; /* Azul oceano profundo */
             color: #ffffff; /* Texto branco para alto contraste */
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            padding: 24px;
+            padding: 16px; /* Ajuste sutil de padding conforme o modelo do professor */
             border-radius: 8px 8px 0 0;
         }
+
+        /* Estilos da Seção Principal - Estrutura do Prof. Marcelo */
         main {
             background-color: #03045e; /* Azul marinho escuro */
             color: #caf0f8; /* Texto em azul claro brilhante para leitura fácil */
             max-width: 800px;
             margin: 0 auto;
-            padding: 24px;
+            padding: 16px; /* Ajuste sutil de padding conforme o modelo do professor */
             border-radius: 0 0 8px 8px;
         }
+
+        /* Estrutura de Artigo (Flexbox) - Conforme o Prof. Marcelo */
+        article {
+            display: flex;
+            align-items: flex-start; /* Alinha o topo da imagem e do texto */
+            margin-bottom: 20px; /* Espaçamento entre artigos, se houver mais de um */
+        }
+
+        /* Estilos da Imagem de Blog */
         img {
             width: 80px;
             height: 80px;
             border-radius: 50%; /* Deixa a imagem redonda como uma bolha */
             border: 2px solid #00b4d8;
+            margin-right: 16px; /* Espaço entre a imagem e o texto */
         }
+
+        /* Estilos dos Títulos e Div de Conteúdo */
         h2 {
             color: #90e0ef; /* Destaque para o título interno */
+            margin-top: 0; /* Remove margem superior para alinhar com a imagem */
         }
+
+        .artigo-autor {
+            font-weight: bold;
+            color: #caf0f8; /* Mantendo a cor do texto do main */
+        }
+
+        /* Estilos para os Botões de Interação (Nova adição) */
+        button {
+            background-color: transparent;
+            border: 1px solid #00b4d8;
+            color: #caf0f8;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: rgba(0, 180, 216, 0.2);
+        }
+
+        button span {
+            margin-left: 5px;
+        }
+
     </style>
 </head>
+
 <body>
     <header>
         <h1>Blog da Evelin</h1>
@@ -46,12 +94,44 @@
     </header>
 
     <main>
-        <img src="fundo-do-mar.png" alt="Logotipo circular estilizado em tons de azul e turquesa, mostrando a silhueta de uma tartaruga marinha nadando entre corais e bolhas de ar subindo em direção à superfície.">
-        <h2>Bem-Vindos ao Meu Oceano de Descobertas!</h2>
-        <p>Por: Evelin Thaissa</p>
-        <p>Fala, galera! Sejam muito bem-vindos ao meu espaço!</p>
+        <article>
+            <img src="fundo-do-mar.png"
+                alt="Logotipo circular estilizado em tons de azul e turquesa, mostrando a silhueta de uma tartaruga marinha nadando entre corais e bolhas de ar subindo em direção à superfície.">
+            <div>
+                <h2>Bem-Vindos ao Meu Oceano de Descobertas!</h2>
+                <p class="artigo-autor">Por: Evelin Thaissa</p>
+                <p>Fala, galera! Sejam muito bem-vindos ao meu espaço!</p>
+                <p>Eu sou completamente apaixonada pelas profundezas do oceano e criei este cantinho para ser o nosso ponto de encontro oficial para falar sobre a vida marinha de um jeito leve, curioso e fascinante. Por aqui, vou soltar curiosidades sobre criaturas misteriosas das fossas abissais, falar sobre a preservação dos recifes de corais e desvendar os segredos dos gigantes do oceano. Fiquem à vontade para soltar a âncora nos comentários e me contar logo de cara: qual é o animal marinho favorito de vocês? 🌊🐬✨</p>
 
-        <p>Eu sou completamente apaixonada pelas profundezas do oceano e criei este cantinho para ser o nosso ponto de encontro oficial para falar sobre a vida marinha de um jeito leve, curioso e fascinante. Por aqui, vou soltar curiosidades sobre criaturas misteriosas das fossas abissais, falar sobre a preservação dos recifes de corais e desvendar os segredos dos gigantes do oceano. Fiquem à vontade para soltar a âncora nos comentários e me contar logo de cara: qual é o animal marinho favorito de vocês? 🌊🐬✨</p>
-    </main>
+                <button id="btn-curtir">❤️ <span>0</span></button>
+                <button id="btn-joinha">👍 <span>0</span></button>
+            </div>
+        </article>
+        </main>
+
+    <script>
+        // Lógica para os botões de interagir, conforme solicitado
+        const botoes = document.querySelectorAll("button");
+
+        botoes.forEach(function (botao) {
+            let curtiu = false;
+            botao.addEventListener("click", botaoClicado);
+
+            function botaoClicado() {
+                console.log("fui clicado");
+                let texto = botao.querySelector("span");
+                if (curtiu === false) {
+                    texto.textContent++;
+                    curtiu = true;
+                    botao.style.backgroundColor = "rgba(0, 180, 216, 0.4)"; // Efeito visual de clicado
+                } else {
+                    texto.textContent--;
+                    curtiu = false;
+                    botao.style.backgroundColor = "transparent"; // Remove efeito visual
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
